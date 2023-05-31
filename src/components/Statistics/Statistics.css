@@ -1,4 +1,16 @@
+.statistics {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  padding: 15px;
+  font-size: 30px;
+  width: 300px;
+}
+
 .stat-list {
   background: azure;
   border: 4px solid black;
+
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px 10px;
+  margin: 20px 0 0 0;
 }

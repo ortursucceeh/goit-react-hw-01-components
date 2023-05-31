@@ -6,6 +6,7 @@ import data from '../data.json'
 
 
 export const App = () => {
+  console.log('data :>> ', data);
   return (
     <div
       style={{
