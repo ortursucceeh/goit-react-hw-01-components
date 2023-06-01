@@ -1,19 +1,20 @@
-import './TransactionHistory.css';
+import css from './TransactionHistory.module.css';
+import PropTypes from 'prop-types';
 
 const TransactionItem = ({ transaction }) => {
   return (
-    <tr key={transaction.id} className="table-content">
-      <td className="table-data">{transaction.type}</td>
-      <td className="table-data">{transaction.amount}</td>
-      <td className="table-data">{transaction.currency}</td>
+    <tr key={transaction.id} className={css['table-content']}>
+      <td className={css['table-data']}>{transaction.type}</td>
+      <td className={css['table-data']}>{transaction.amount}</td>
+      <td className={css['table-data']}>{transaction.currency}</td>
     </tr>
   );
 };
 
 const TransactionHistory = ({ items }) => {
   return (
-    <table className="table">
-      <thead className="table__header">
+    <table className={css['table']}>
+      <thead className={css['table__header']}>
         <tr>
           <th>Type</th>
           <th>Amount</th>
@@ -22,8 +23,8 @@ const TransactionHistory = ({ items }) => {
       </thead>
 
       <tbody>
-        {items.map(transaction => (
-          <TransactionItem transaction={transaction} />
+        {items.map((transaction, index) => (
+          <TransactionItem key={index} transaction={transaction} />
         ))}
       </tbody>
     </table>
@@ -31,3 +32,11 @@ const TransactionHistory = ({ items }) => {
 };
 
 export default TransactionHistory;
+
+TransactionItem.propTypes = {
+  transaction: PropTypes.object.isRequired,
+};
+
+TransactionHistory.propTypes = {
+  transaction: PropTypes.array.isRequired,
+};

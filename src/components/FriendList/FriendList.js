@@ -1,5 +1,6 @@
 import css from './FriendList.module.css';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 const FriendItem = ({ friend }) => {
   return (
@@ -25,11 +26,17 @@ const FriendItem = ({ friend }) => {
 const FriendList = ({ friends }) => {
   return (
     <ul className={clsx(css['friend-list'])}>
-      {friends.map(friend => (
-        <FriendItem friend={friend} />
+      {friends.map((friend, index) => (
+        <FriendItem key={index} friend={friend} />
       ))}
     </ul>
   );
+};
+
+FriendList.propTypes = {
+  imgUrl: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
 };
 
 export default FriendList;

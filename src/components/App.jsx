@@ -11,7 +11,6 @@ import TransactionHistory from "./TransactionHistory/TransactionHistory";
 import transactions from '../data/transactions.json'
 
 export const App = () => {
-  console.log('data :>> ', data);
   return (
     <>
       <div

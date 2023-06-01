@@ -5,23 +5,23 @@
   background: #f0f0f0;
 }
 
-.description {
+.profile__description {
   text-align: center;
 }
 
-.name {
+.profile__name {
   font-weight: 700;
 }
 
-.avatar {
+.profile__avatar {
   width: 150px;
   border: 4px solid black;
   padding: 10px;
   border-radius: 50%;
 }
 
-.tag,
-.location {
+.profile__tag,
+.profile__location {
   font-size: 22px;
   color: rgb(89, 85, 122);
 }
@@ -43,7 +43,7 @@ span {
   margin-top: 5px;
 }
 
-.label {
+.stats__label {
   font-size: 25px;
   font-weight: 500;
 }
