@@ -33,10 +33,10 @@ const TransactionHistory = ({ items }) => {
 
 export default TransactionHistory;
 
-TransactionItem.propTypes = {
-  transaction: PropTypes.object.isRequired,
+TransactionHistory.propTypes = {
+  items: PropTypes.array.isRequired,
 };
 
-TransactionHistory.propTypes = {
-  transaction: PropTypes.array.isRequired,
+TransactionItem.propTypes = {
+  transaction: PropTypes.object.isRequired,
 };

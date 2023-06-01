@@ -1,13 +1,13 @@
-import './Statistics.css';
+import css from './Statistics.module.css';
+import PropTypes from 'prop-types';
 
 const StatsList = ({ stats }) => {
-  // console.log('stats :>> ', stats);
   return (
-    <ul className="stat-list">
+    <ul className={css['stat-list']}>
       {stats.map(item => (
-        <li key={item.id} className="item">
-          <span className="label">{item.label}</span>
-          <span className="percentage">{item.percentage}%</span>
+        <li key={item.id} className={css['item']}>
+          <span className={css['label']}>{item.label}</span>
+          <span className={css['percentage']}>{item.percentage}%</span>
         </li>
       ))}
     </ul>
@@ -16,11 +16,20 @@ const StatsList = ({ stats }) => {
 
 const Statistics = ({ title, stats }) => {
   return (
-    <section className="statistics">
-      <h2 className="title">{title ? title : 'Upload stats'}</h2>
+    <section className={css['statistics']}>
+      <h2 className={css['title']}>{title ? title : 'Upload stats'}</h2>
       <StatsList stats={stats} />
     </section>
   );
 };
 
 export default Statistics;
+
+StatsList.propTypes = {
+  stats: PropTypes.array.isRequired,
+};
+
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.array,
+};

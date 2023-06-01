@@ -34,9 +34,11 @@ const FriendList = ({ friends }) => {
 };
 
 FriendList.propTypes = {
-  imgUrl: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  friends: PropTypes.array.isRequired,
+};
+
+FriendItem.propTypes = {
+  friend: PropTypes.object.isRequired,
 };
 
 export default FriendList;
