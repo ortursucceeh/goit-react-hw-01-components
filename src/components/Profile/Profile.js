@@ -1,20 +1,20 @@
 import css from './Profile.module.css';
 import PropTypes from 'prop-types';
 
-const ProfileStats = ({ stats }) => {
+const ProfileStats = ({ followers, views, likes }) => {
   return (
     <ul className={css['stats']}>
       <li>
         <span className={css['stats__label']}>Followers</span>
-        <span>{stats.followers}</span>
+        <span>{followers}</span>
       </li>
       <li>
         <span className={css['stats__label']}>Views</span>
-        <span>{stats.views}</span>
+        <span>{views}</span>
       </li>
       <li>
         <span className={css['stats__label']}>Likes</span>
-        <span>{stats.likes}</span>
+        <span>{likes}</span>
       </li>
     </ul>
   );
@@ -30,7 +30,11 @@ const Profile = ({ username, tag, location, avatar, stats }) => {
         <p className={css['profile__location']}>{location}</p>
       </div>
 
-      <ProfileStats stats={stats} />
+      <ProfileStats
+        followers={stats.followers}
+        likes={stats.likes}
+        views={stats.views}
+      />
     </div>
   );
 };
@@ -38,7 +42,9 @@ const Profile = ({ username, tag, location, avatar, stats }) => {
 export default Profile;
 
 ProfileStats.propTypes = {
-  stats: PropTypes.object.isRequired,
+  followers: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+  views: PropTypes.number.isRequired,
 };
 
 Profile.propTypes = {
@@ -46,5 +52,9 @@ Profile.propTypes = {
   tag: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
-  stats: PropTypes.object.isRequired,
+  stats: PropTypes.exact({
+    followers: PropTypes.number,
+    likes: PropTypes.number,
+    views: PropTypes.number,
+  }).isRequired,
 };

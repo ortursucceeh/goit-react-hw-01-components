@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 const StatsList = ({ stats }) => {
   return (
     <ul className={css['stat-list']}>
-      {stats.map(item => (
-        <li key={item.id} className={css['item']}>
-          <span className={css['label']}>{item.label}</span>
-          <span className={css['percentage']}>{item.percentage}%</span>
+      {stats.map(({ id, label, percentage }) => (
+        <li key={id} className={css['item']}>
+          <span className={css['label']}>{label}</span>
+          <span className={css['percentage']}>{percentage}%</span>
         </li>
       ))}
     </ul>
@@ -17,7 +17,7 @@ const StatsList = ({ stats }) => {
 const Statistics = ({ title, stats }) => {
   return (
     <section className={css['statistics']}>
-      <h2 className={css['title']}>{title ? title : 'Upload stats'}</h2>
+      {title ? <h2 className={css['title']}>{title}</h2> : ''}
       <StatsList stats={stats} />
     </section>
   );
@@ -26,10 +26,22 @@ const Statistics = ({ title, stats }) => {
 export default Statistics;
 
 StatsList.propTypes = {
-  stats: PropTypes.array.isRequired,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ),
 };
 
 Statistics.propTypes = {
   title: PropTypes.string,
-  stats: PropTypes.array,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ),
 };

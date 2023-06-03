@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TransactionItem = ({ transaction }) => {
   return (
-    <tr key={transaction.id} className={css['table-content']}>
+    <tr className={css['table-content']}>
       <td className={css['table-data']}>{transaction.type}</td>
       <td className={css['table-data']}>{transaction.amount}</td>
       <td className={css['table-data']}>{transaction.currency}</td>
@@ -23,8 +23,8 @@ const TransactionHistory = ({ items }) => {
       </thead>
 
       <tbody>
-        {items.map((transaction, index) => (
-          <TransactionItem key={index} transaction={transaction} />
+        {items.map(transaction => (
+          <TransactionItem key={transaction.id} transaction={transaction} />
         ))}
       </tbody>
     </table>
@@ -34,9 +34,21 @@ const TransactionHistory = ({ items }) => {
 export default TransactionHistory;
 
 TransactionHistory.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      amount: PropTypes.string,
+      currency: PropTypes.string,
+    })
+  ).isRequired,
 };
 
 TransactionItem.propTypes = {
-  transaction: PropTypes.object.isRequired,
+  transaction: PropTypes.exact({
+    id: PropTypes.string,
+    type: PropTypes.string,
+    amount: PropTypes.string,
+    currency: PropTypes.string,
+  }).isRequired,
 };
